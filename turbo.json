@@ -1,0 +1,41 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "tui",
+  "tasks": {
+    "build:packages": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
+    },
+    "build": {
+      "dependsOn": ["build:packages"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": ["build/**"]
+    },
+    "check-types": {
+      "dependsOn": ["^check-types"]
+    },
+    "clean": {
+      "cache": false
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "lint": {
+      "dependsOn": ["build:packages"],
+      "outputs": []
+    },
+    "lint:fix": {
+      "dependsOn": ["build:packages"],
+      "cache": false
+    },
+    "size": {
+      "dependsOn": ["build"],
+      "outputs": []
+    },
+    "typecheck": {
+      "dependsOn": ["build:packages"],
+      "outputs": []
+    }
+  }
+}

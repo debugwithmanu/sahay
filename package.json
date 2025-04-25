@@ -1,0 +1,24 @@
+{
+  "name": "monorepo",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "build:packages": "turbo run build --filter=./packages/*",
+    "clean": "turbo run clean && rm -rf node_modules/.cache/turbo && rm -rf packages/**/dist",
+    "deepclean": "turbo run clean && rm -rf node_modules && rm -rf apps/**/node_modules packages/**/node_modules && pnpm store prune",
+    "typecheck": "turbo run typecheck",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint -- --fix",
+    "lint:ci": "turbo run lint -- --max-warnings=0",
+    "format:check": "prettier --check \"**/*.{ts,tsx,md}\"",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "devDependencies": {
+    "turbo": "^2.3.4"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "engines": {
+    "node": ">=18"
+  }
+}

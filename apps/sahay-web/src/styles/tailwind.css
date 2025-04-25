@@ -1,0 +1,10 @@
+@theme {
+  --color-primary: #3b82d6;
+  --color-secondary: #01ff70;
+}
+
+@layer components {
+  .test {
+    @apply bg-red-500;
+  }
+}
